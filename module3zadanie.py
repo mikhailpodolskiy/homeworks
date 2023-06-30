@@ -1,3 +1,4 @@
+# Задача 1
 class BankAccount:
     def __init__(self, account_number, name, balance):
         self.__account_number = account_number
@@ -34,3 +35,14 @@ print(f"После пополнения Ваш баланс равен {klient00
 amount1 = float(input("Сколько хотите снять со счета?\n>> "))
 klient001.withdraw(amount1)
 print(f"Баланс Вашего счета равен {klient001.check_balance()} рублей")
+
+
+# Задача №2
+class Album:
+    def __init__(self, artist, title):
+        self.artist = artist
+        self.title = title
+        self.songs = list()
+
+    def add_song(self, song):
+        self.songs.append(song)
