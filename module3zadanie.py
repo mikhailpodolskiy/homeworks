@@ -62,7 +62,7 @@ class Album:
     def __init__(self, artist, title):
         self.artist = artist
         self.title = title
-        self.songs = list()
+        self.track = list()
 
     def add_song(self, song):
-        self.songs.append(song)
+        self.track.append(song)
