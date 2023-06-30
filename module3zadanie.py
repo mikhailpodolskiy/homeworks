@@ -38,6 +38,26 @@ print(f"Баланс Вашего счета равен {klient001.check_balance
 
 
 # Задача №2
+
+class Track:
+    def __init__(self, artist, title, duration, genre):
+        self.artist = artist
+        self.title = title
+        self.duration = duration
+        self.genre = genre
+
+    def get_artist(self):
+        return self.artist
+
+    def get_title(self):
+        return self.title
+    
+    def get_duration(self):
+        return self.duration
+
+    def get_genre(self):
+        return self.genre
+
 class Album:
     def __init__(self, artist, title):
         self.artist = artist
