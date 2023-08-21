@@ -1,0 +1,97 @@
+# Задача номер 1
+class Animal:
+    def __init__(self, name: str, type: str, age: int) -> None:
+        self.name = name
+        self.type = type
+        self.age = age
+
+    def sound(self) -> str:
+        return f"Животное {self.type} издает звук"
+
+    def __str__(self) -> str:
+        return f"Животное {self.type} имеет имя: {self.name} и возраст {self.age} года"
+
+a1 = Animal("Буренка", "Корова", 3)
+a2 = Animal("Мурка", "Кошка", 4)
+
+print(a1)
+print(a1.sound())
+print(a2)
+
+# Задача номер 2
+print("")
+
+class Book:
+    def __init__(self, name: str, author: str, pages: int) -> None:
+        self.name = name
+        self.author = author
+        self.pages = pages
+
+    def open_book(self, number_page: int) -> None:
+        if number_page <= self.pages:
+            print(f"Книга '{self.name}' открыта на странице {number_page}")
+        else:
+            print(f"Книга '{self.name}' не открылась, т.к. в ней всего {self.pages} страниц")
+
+    def __str__(self) -> str:
+        return f"Название книги: {self.name}, Автор: {self.author}, Всего страниц: {self.pages}"
+
+book1 = Book("Война и мир", "Л. Н. Толстой", 1300)
+book2 =Book("Идиот", "Федор Достоевский", 637)
+
+print(book1)
+book2.open_book(15)
+book2.open_book(1115)
+
+
+# Задача номер 3
+print("")
+
+class PassengerPlane:
+    def __init__(self, manufacturer: str, model: str, capacity: int, altitude: int or float, speed: int or float) -> None:
+        self.manufacturer = manufacturer
+        self.model = model
+        self.capacity = capacity
+        self.altitude = altitude
+        self.speed = speed
+
+
+    def took_off(self):
+        if self.altitude > 0:
+            print("Самолет взлетел!")
+        else:
+            print("Самолет еще не взлетел!")
+
+
+    def landing(self):
+        if self.altitude == 0:
+            print("Самолет приземлился!")
+        else:
+            print("Самолет еще не приземлился!")
+
+
+    def change_altitude(self, newaltitude: int or float) -> None:
+        self.altitude = newaltitude
+
+
+    def change_speed(self, newspeed: int or float) -> None:
+        self.speed = newspeed
+
+
+    def __str__(self):
+        return f"Самолет модель {self.model}, производитель: {self.manufacturer}, вместимость пассажиров: {self.capacity}, текущая высота полета {self.altitude} км, скорость полета {self.speed} км\ч"
+
+
+air1 = PassengerPlane("ОКБ Ильюшина", "Ил-96-300", 300, 0, 5)
+air2 = PassengerPlane("ПАО «Корпорация „Яковлев“»", "МС-21", 211, 5, 150)
+
+
+print(air1)
+air1.took_off()
+air1.change_speed(60)
+air1.change_altitude(100)
+print(air1)
+air1.took_off()
+air2.change_altitude(0)
+print(air2)
+air2.landing()
