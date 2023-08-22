@@ -5,11 +5,14 @@ class Animal:
         self.type = type
         self.age = age
 
+
     def sound(self) -> str:
         return f"Животное {self.type} издает звук"
 
+
     def __str__(self) -> str:
         return f"Животное {self.type} имеет имя: {self.name} и возраст {self.age} года"
+
 
 a1 = Animal("Буренка", "Корова", 3)
 a2 = Animal("Мурка", "Кошка", 4)
@@ -27,14 +30,17 @@ class Book:
         self.author = author
         self.pages = pages
 
+
     def open_book(self, number_page: int) -> None:
         if number_page <= self.pages:
             print(f"Книга '{self.name}' открыта на странице {number_page}")
         else:
             print(f"Книга '{self.name}' не открылась, т.к. в ней всего {self.pages} страниц")
 
+
     def __str__(self) -> str:
         return f"Название книги: {self.name}, Автор: {self.author}, Всего страниц: {self.pages}"
+
 
 book1 = Book("Война и мир", "Л. Н. Толстой", 1300)
 book2 =Book("Идиот", "Федор Достоевский", 637)
@@ -95,3 +101,168 @@ air1.took_off()
 air2.change_altitude(0)
 print(air2)
 air2.landing()
+
+# Задача номер 4
+print("")
+
+class MusicAlbum:
+    def __init__(self, singer: str, album: str, genre: str, list_tracks: list) -> None:
+        self.singer = singer
+        self.album = album
+        self.genre = genre
+        self.list_tracks = list_tracks
+
+
+    def add_track(self, track: str) -> None:
+        self.list_tracks.append(track)
+        print(f"Трек '{track}' добавлен в альбом '{self.album}'")
+
+
+    def remove_track(self, track: str) -> None:
+        if track in self.list_tracks:
+            self.list_tracks.remove(track)
+            print(f"Трек '{track}' удален из альбома '{self.album}'")
+        else:
+            print(f"Трек '{track}' не найден в альбоме '{self.album}'")
+
+
+    def play_track(self, track: str) -> None:
+        if track in self.list_tracks:
+            print(f"Трек '{track}' воспроизводится")
+        else:
+            print(f"Трек '{track}' не найден в '{self.album}'")
+
+
+    def __str__(self):
+        return f"Исполнитель: {self.singer}, Название альбома: '{self.album}', Жанр: {self.genre}, список треков: {self.list_tracks}"
+
+restless = ["Restless (Intro)", "Front 2 Back", "Been a Long Time", "U Know", 	"Alkaholik"]
+reload = ["Fuel", "The Memory Remains", "Devil's Dance", "Better than You"]
+mus1 = MusicAlbum("Xzibit", "Restless", "хип-хоп Западного побережья", restless)
+mus2 = MusicAlbum("Metallica", "Reload", "трэш-металл", reload)
+
+print(mus2)
+mus2.add_track("Slither")
+print(mus2)
+mus2.remove_track("U Know")
+print(mus2)
+mus2.remove_track("Fuel")
+print(mus2)
+print(mus1)
+mus1.play_track("Front 2 Back")
+mus1.play_track("Бурлаки")
+
+# Задача номер 5
+print("")
+
+class Fraction:
+    def __init__(self, numerator: int, denominator: int) -> None:
+        self.numerator = numerator
+        self.denominator = denominator
+
+
+    def __add__(self, other):
+        if self.denominator == other.denominator:
+            add_numerator = other.numerator + self.numerator
+            add_denominator = self.denominator
+        else:
+            add_denominator = other.denominator * self.denominator
+            add_numerator = self.numerator * other.denominator + other.numerator * self.denominator
+        return Fraction(add_numerator, add_denominator)
+
+
+    def __sub__(self, other):
+        if self.denominator == other.denominator:
+            add_numerator = other.numerator - self.numerator
+            add_denominator = self.denominator
+        else:
+            add_denominator = other.denominator * self.denominator
+            add_numerator = self.numerator * other.denominator - other.numerator * self.denominator
+        return Fraction(add_numerator, add_denominator)
+
+
+    def __mul__(self, other):
+        add_numerator = other.numerator * self.numerator
+        add_denominator = self.denominator * other.denominator
+        return Fraction(add_numerator, add_denominator)
+
+    def __truediv__(self, other):
+        add_numerator = self.numerator * other.denominator
+        add_denominator = self.denominator * other.numerator
+        return Fraction(add_numerator, add_denominator)
+
+
+    def __eq__(self, other):
+        Isresult = False
+        if self.numerator == other.numerator and self.denominator == other.denominator:
+            Isresult = True
+        return Isresult
+
+
+    def __ne__(self, other):
+        Isresult = False
+        if self.numerator != other.numerator or self.denominator != other.denominator:
+            Isresult = True
+        return Isresult
+
+
+    def __lt__(self, other):
+        Isresult = False
+        if self.numerator * other.denominator < self.denominator * other.numerator:
+            Isresult = True
+        return Isresult
+
+
+    def __le__(self, other):
+        Isresult = False
+        if self.numerator * other.denominator <= self.denominator * other.numerator:
+            Isresult = True
+        return Isresult
+
+
+    def __gt__(self, other):
+        Isresult = False
+        if self.numerator * other.denominator > self.denominator * other.numerator:
+            Isresult = True
+        return Isresult
+
+
+    def __ge__(self, other):
+        Isresult = False
+        if self.numerator * other.denominator >= self.denominator * other.numerator:
+            Isresult = True
+        return Isresult
+
+    def __str__(self):
+        if self.denominator == 0:
+            return f"Деление на ноль запрещено"
+        return f"{self.numerator}/{self.denominator}"
+
+
+x1 = Fraction(4, 7)
+x2 = Fraction (4, 7)
+
+print("Значение х1 равно: ", end="")
+print(x1)
+print("Значение х2 равно: ", end="")
+print(x2)
+print("Сумма х1 + х2 равно: ", end="")
+print(x1 + x2)
+print("Вычитание х1 - х2 равно: ", end="")
+print(x1 - x2)
+print("Умножение х1 * х2 равно: ", end="")
+print(x1 * x2)
+print("Деление х1 / х2 равно: ", end="")
+print(x1 / x2)
+print("Верно ли утверждение что х1 = х2: ", end="")
+print(x1 == x2)
+print("Верно ли утверждение что х1 != х2: ", end="")
+print(x1 != x2)
+print("Верно ли утверждение что х1 < х2: ", end="")
+print(x1 < x2)
+print("Верно ли утверждение что х1 <= х2: ", end="")
+print(x1 <= x2)
+print("Верно ли утверждение что х1 > х2: ", end="")
+print(x1 > x2)
+print("Верно ли утверждение что х1 >= х2: ", end="")
+print(x1 >= x2)
